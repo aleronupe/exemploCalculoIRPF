@@ -16,10 +16,6 @@ public class Contribuinte {
 	private Contribuinte() {
 		rendimentos = new LinkedList<Rendimento>();
 		deducoes = new Deducao[0];
-//		dependentes = new String[0];
-//		diaNascDeps = new int[0];
-//		mesNascDeps = new int[0];
-//		anoNascDeps = new int[0];
 	}
 	
 	public Contribuinte(String nome) {
