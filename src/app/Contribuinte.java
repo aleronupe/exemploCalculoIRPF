@@ -12,6 +12,7 @@ public class Contribuinte {
 	private int[] diaNascDeps = new int[0];
 	private int[] mesNascDeps = new int[0];
 	private int[] anoNascDeps = new int[0];
+	private float baseDeCalculo;
 
 	private Contribuinte() {
 		rendimentos = new LinkedList<Rendimento>();
@@ -174,5 +175,10 @@ public class Contribuinte {
 
 	private int obterNovaQtdeDep(int numDependentes) {
 		return numDependentes + 1;
+	}
+
+	public float calcularBase() {
+		this.baseDeCalculo =  getTotalRendimentos() - getTotalDeducoes();
+		return baseDeCalculo;
 	}
 }
