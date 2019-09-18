@@ -61,7 +61,7 @@ public class Contribuinte {
 		
 		//criar posicao no vetor para receber a nova deducao
 		int numDeducoes = deducoes.length;
-		Deducao[] temp = new Deducao[obterNovaQtdeDep(numDeducoes)];
+		Deducao[] temp = new Deducao[numDeducoes + 1];
 		for (int i=0; i < numDeducoes; i++) {
 			temp[i] = deducoes[i];
 		}
@@ -104,7 +104,7 @@ public class Contribuinte {
 		int numDependentes = cadDep.dependentes.length;
 		
 		//Alocar o nome do dependente
-		String[] tempDependentes = new String[obterNovaQtdeDep(numDependentes)];
+		String[] tempDependentes = new String[numDependentes + 1];
 		for (int i=0; i<numDependentes; i++) {
 			tempDependentes[i] = cadDep.dependentes[i];
 		}
@@ -121,7 +121,7 @@ public class Contribuinte {
 		
 		
 		//Alocar o dia de nascimento do dependente
-		int tempDiaNascDep[] = new int[obterNovaQtdeDep(numDependentes)];
+		int tempDiaNascDep[] = new int[numDependentes + 1];
 		for (int i=0; i<numDependentes; i++) {
 			tempDiaNascDep[i] = diaNascDeps[i];
 		}
@@ -138,7 +138,7 @@ public class Contribuinte {
 		
 		
 		//Alocar o mes de nascimento do dependente
-		int tempMesNascDep[] = new int[obterNovaQtdeDep(numDependentes)];
+		int tempMesNascDep[] = new int[numDependentes + 1];
 		for (int i=0; i<numDependentes; i++) {
 			tempMesNascDep[i] = mesNascDeps[i];
 		}
@@ -155,7 +155,7 @@ public class Contribuinte {
 		
 		
 		//alocar o ano de nascimento do dependente
-		int tempAnoNascDep[] = new int[obterNovaQtdeDep(numDependentes)];
+		int tempAnoNascDep[] = new int[numDependentes + 1];
 		for (int i=0; i<numDependentes; i++) {
 			tempAnoNascDep[i] = anoNascDeps[i];
 		}
@@ -171,10 +171,6 @@ public class Contribuinte {
 		
 		
 		return alocacaoNomeDependente && alocacaoDiaNascDep && alocacaoMesNascDep && alocacaoAnoNascDep;
-	}
-
-	private int obterNovaQtdeDep(int numDependentes) {
-		return numDependentes + 1;
 	}
 
 	public float calcularBase() {
