@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import app.Contribuinte;
+import app.DadosNascimento;
 
 public class BaseDeCalculoTeste {
 
@@ -32,7 +33,7 @@ public class BaseDeCalculoTeste {
 	public void testBaseDeCalculo2() {
 		//1 rendimento tributavel, 1 dependente, 1 deducao simples
 		c.cadastrarRendimento("Salario", 10000, true);
-		c.cadastrarDependente("Carlos", 30, 3, 2019);
+		c.cadastrarDependente(new DadosNascimento("Carlos", 30, 3, 2019));
 		c.criarDeducao("Contribuição Previdenciaria", 500);
 		
 		assertEquals(689.59f, c.getTotalDeducoes(), 0.01f);
@@ -45,8 +46,8 @@ public class BaseDeCalculoTeste {
 		c.cadastrarRendimento("Salario", 4000, true);
 		c.cadastrarRendimento("Aluguel", 500, true);
 		
-		c.cadastrarDependente("Carlos", 21, 11, 2016);
-		c.cadastrarDependente("Daniel", 2, 6, 2018);
+		c.cadastrarDependente(new DadosNascimento("Carlos", 21, 11, 2016));
+		c.cadastrarDependente(new DadosNascimento("Daniel", 2, 6, 2018));
 		
 		c.criarDeducao("Contribuição Previdenciária", 300);
 		

@@ -8,10 +8,11 @@ public class Contribuinte {
 	private String nome;
 	private List<Rendimento> rendimentos;
 	private Deducao[] deducoes;
-	private CadastroDependente cadDep = new CadastroDependente(new String[0]);
-	private int[] diaNascDeps = new int[0];
-	private int[] mesNascDeps = new int[0];
-	private int[] anoNascDeps = new int[0];
+	//Retirar o modificador de visibilidade permite que o pacote acesse esses dados
+	CadastroDependente cadDep = new CadastroDependente(new String[0]);
+	int[] diaNascDeps = new int[0];
+	int[] mesNascDeps = new int[0];
+	int[] anoNascDeps = new int[0];
 	private float baseDeCalculo;
 
 	private Contribuinte() {
@@ -98,79 +99,8 @@ public class Contribuinte {
 		return resposta;
 	}
 
-	public boolean cadastrarDependente(String nome, int diaNascimento, int mesNascimento, int anoNascimento) {
-		
-		//cadastrar um dependente = alocar cada parametro desse metodo em seu vetor especifico.
-		int numDependentes = cadDep.dependentes.length;
-		
-		//Alocar o nome do dependente
-		String[] tempDependentes = new String[numDependentes + 1];
-		for (int i=0; i<numDependentes; i++) {
-			tempDependentes[i] = cadDep.dependentes[i];
-		}
-		tempDependentes[numDependentes] = nome;
-		
-		//atualizar o vetor de dependentes
-		cadDep.dependentes = tempDependentes;
-		
-		//verificar alocacao de dependente
-		boolean alocacaoNomeDependente = false;
-		if (cadDep.dependentes[numDependentes].equals(nome))
-			alocacaoNomeDependente = true;
-		
-		
-		
-		//Alocar o dia de nascimento do dependente
-		int tempDiaNascDep[] = new int[numDependentes + 1];
-		for (int i=0; i<numDependentes; i++) {
-			tempDiaNascDep[i] = diaNascDeps[i];
-		}
-		tempDiaNascDep[numDependentes] = diaNascimento;
-		
-		//atualizar o vetor de dias de nascimento dos dependentes
-		diaNascDeps = tempDiaNascDep;
-		
-		//verificar a alocacao do dia de nascimento do dependente
-		boolean alocacaoDiaNascDep = false;
-		if (diaNascDeps[numDependentes] == diaNascimento) 
-			alocacaoDiaNascDep = true;
-		
-		
-		
-		//Alocar o mes de nascimento do dependente
-		int tempMesNascDep[] = new int[numDependentes + 1];
-		for (int i=0; i<numDependentes; i++) {
-			tempMesNascDep[i] = mesNascDeps[i];
-		}
-		tempMesNascDep[numDependentes] = mesNascimento;
-		
-		//atualizar o vetor de mes de nascimento dos dependentes
-		mesNascDeps = tempMesNascDep; 
-		
-		//verificar a alocacao do dia de nascimento do dependente
-		boolean alocacaoMesNascDep = false; 
-		if (mesNascDeps[numDependentes] == mesNascimento)
-			alocacaoMesNascDep = true;
-			
-		
-		
-		//alocar o ano de nascimento do dependente
-		int tempAnoNascDep[] = new int[numDependentes + 1];
-		for (int i=0; i<numDependentes; i++) {
-			tempAnoNascDep[i] = anoNascDeps[i];
-		}
-		tempAnoNascDep[numDependentes] = anoNascimento;
-		
-		//atualizar o vetor de ano de nascimento dos dependentes
-		anoNascDeps = tempAnoNascDep;
-		
-		//verificar a alocacao do ano de nascimento do dependente
-		boolean alocacaoAnoNascDep = false;
-		if (anoNascDeps[numDependentes] == anoNascimento) 
-			alocacaoAnoNascDep = true;
-		
-		
-		return alocacaoNomeDependente && alocacaoDiaNascDep && alocacaoMesNascDep && alocacaoAnoNascDep;
+	public boolean cadastrarDependente(DadosNascimento parameterObject) {
+		return new CadastrarDependente(this, parameterObject).Computar();
 	}
 
 	public float calcularBase() {

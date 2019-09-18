@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import app.CadastroContribuintes;
 import app.Contribuinte;
+import app.DadosNascimento;
 
 public class TesteDeducoesDependentes {
 
@@ -22,7 +23,7 @@ public class TesteDeducoesDependentes {
 	@Test
 	public void testDeducaoUmDependente() {
 		Contribuinte c = cad.pesquisar("Andre"); 
-		boolean resposta = c.cadastrarDependente("Miguel", 9, 3, 2019);
+		boolean resposta = c.cadastrarDependente(new DadosNascimento("Miguel", 9, 3, 2019));
 		assertTrue(resposta);
 		assertEquals(189.59f, c.getTotalDeducoes(), 0.0f);
 	}
@@ -30,9 +31,9 @@ public class TesteDeducoesDependentes {
 	@Test
 	public void testCadastroDoisDependentes() {
 		Contribuinte c = cad.pesquisar("Andre");
-		boolean resposta = c.cadastrarDependente("Miguel", 9, 3, 2019);
+		boolean resposta = c.cadastrarDependente(new DadosNascimento("Miguel", 9, 3, 2019));
 		assertTrue(resposta);
-		resposta = c.cadastrarDependente("Maria", 15, 05, 2018);
+		resposta = c.cadastrarDependente(new DadosNascimento("Maria", 15, 05, 2018));
 		assertTrue(resposta);
 		assertEquals(379.18f, c.getTotalDeducoes(), 0.0f);
 	}
@@ -40,11 +41,11 @@ public class TesteDeducoesDependentes {
 	@Test
 	public void testCadastroTresDependentes() {
 		Contribuinte c = cad.pesquisar("Andre");
-		boolean resposta  = c.cadastrarDependente("Miguel", 9, 3, 2019);
+		boolean resposta  = c.cadastrarDependente(new DadosNascimento("Miguel", 9, 3, 2019));
 		assertTrue(resposta);
-		resposta = c.cadastrarDependente("Maria", 15, 05, 2018);
+		resposta = c.cadastrarDependente(new DadosNascimento("Maria", 15, 05, 2018));
 		assertTrue(resposta);
-		resposta = c.cadastrarDependente("Carlos", 16, 11, 2017);
+		resposta = c.cadastrarDependente(new DadosNascimento("Carlos", 16, 11, 2017));
 		assertTrue(resposta);
 		assertEquals(568.77, c.getTotalDeducoes(), 0.01f);
 	}
