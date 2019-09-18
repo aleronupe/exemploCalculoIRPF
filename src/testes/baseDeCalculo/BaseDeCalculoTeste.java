@@ -38,5 +38,19 @@ public class BaseDeCalculoTeste {
 		assertEquals(689.59f, c.getTotalDeducoes(), 0.01f);
 		assertEquals(9310.41f, c.calcularBase(), 0f);
 	}
-
+	
+	@Test 
+	public void testBaseDeCalculo3() {
+		//2 rendimento tributavel, 2 dependentes, 1 deducao simples
+		c.cadastrarRendimento("Salario", 4000, true);
+		c.cadastrarRendimento("Aluguel", 500, true);
+		
+		c.cadastrarDependente("Carlos", 21, 11, 2016);
+		c.cadastrarDependente("Daniel", 2, 6, 2018);
+		
+		c.criarDeducao("Contribuição Previdenciária", 300);
+		
+		assertEquals(679.18f, c.getTotalDeducoes(), 0.001f);
+		assertEquals(3820.82f, c.calcularBase(), 0.001f);
+	}
 }
